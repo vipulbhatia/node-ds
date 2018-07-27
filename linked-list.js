@@ -1,11 +1,11 @@
-createNode = (val) => {
+const createNode = (val) => {
     return {
         value: val,
         next: null
     }
 }
 
-addNodeToList = (list, node) => {
+const addNodeToList = (list, node) => {
     if(!list.next) {
         list.next = node;
         return;
@@ -15,7 +15,7 @@ addNodeToList = (list, node) => {
     return;
 }
 
-displayList = (list) => {
+const displayList = (list) => {
     if(!list.next) return;
     while(list.next !== null) {
         list = list.next;
