@@ -7,25 +7,26 @@ const createNode = (val) => {
 }
 
 const insertNodeToBST = (bst, node) => {
-    var ptr = bst;
     console.log('inserting value', node.value);
     if(bst === null) {
         bst = node;
         return bst;
     }
+    var ptr = bst;
     while(true) {
-        console.log(ptr);
         if(node.value > ptr.value) {
+            console.log('going right');
             if(ptr.right === null) {
                 ptr.right = node;
-                return;
+                break;
             }
             ptr = ptr.right;
         }
         else {
+            console.log('going left');
             if(ptr.left === null) {
                 ptr.left = node;
-                return;
+                break;
             }
             ptr = ptr.left;
         }
@@ -40,7 +41,7 @@ const displayBST = (bst) => {
 
 var bst = null;
 for(i=0; i<10; i++) {
-    const newNode = createNode(i);
+    var newNode = createNode(Math.floor(Math.random() * 100));
     bst = insertNodeToBST(bst, newNode);
 }
 console.log(bst);
