@@ -6,26 +6,27 @@ const createNode = (val) => {
 }
 
 const addNodeToList = (list, node) => {
-    if(!list.next) {
-        list.next = node;
-        return;
+    var ptr = list;
+    if(list === null) {
+        list = node;
+        return list;
     }
-    while(list.next !== null) list = list.next;
-    list.next = node;
-    return;
+    while(ptr.next !== null) ptr = ptr.next;
+    ptr.next = node;
+    return list;
 }
 
 const displayList = (list) => {
-    if(!list.next) return;
+    if(list === null) return;
     while(list.next !== null) {
         list = list.next;
         process.stdout.write(`${list.value} -> `);
     }
 }
 
-var list = {};
+var list = null;
 for(var i=0; i<10; i++) {
-    var newNode = createNode(i);
-    addNodeToList(list, newNode);
+    const newNode = createNode(i);
+    list = addNodeToList(list, newNode);
 }
 displayList(list);
